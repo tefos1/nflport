@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عن الطالبة - بورتفوليو بيلار رعد</title>
+  
+  <meta name="description" content="نبذة قصيرة عن الطالبة بيلار رعد - بورتفوليو بيلار رعد الرقمي في التربية غير المنهجية والتربية الخاصة.">
+  <meta name="author" content="بيلار رعد">
+
+  <!-- Google Fonts: Alexandria & Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator Bar -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
+  <!-- Sticky Translucent Navbar with Scroll Controls -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="nav-brand">
+        <i class="fa-solid fa-tree"></i>
+        <span>بيلار رعد</span>
+      </a>
+
+      <!-- Navigation Links Container with Scroll Arrows -->
+      <div class="nav-menu-wrapper" id="navMenuWrapper">
+        <button class="nav-scroll-btn" onclick="scrollNavRight()" title="إلى اليمين"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="nav-menu" id="navMenu">
+          <a href="index.html" class="nav-link ">الرئيسية</a>
+<a href="about.html" class="nav-link active">عن الطالبة</a>
+<a href="cv.html" class="nav-link ">السيرة الذاتية</a>
+<a href="goals.html" class="nav-link ">الأهداف</a>
+<a href="achievements.html" class="nav-link ">الإنجازات</a>
+<a href="observations.html" class="nav-link ">المشاهدات</a>
+<a href="lesson-plans.html" class="nav-link ">الدروس</a>
+<a href="evaluations.html" class="nav-link ">التقييمات</a>
+<a href="projects.html" class="nav-link ">المشاريع</a>
+<a href="theories.html" class="nav-link ">النظرية والتطبيق</a>
+<a href="reflections.html" class="nav-link ">التأملات</a>
+<a href="skills.html" class="nav-link ">المهارات</a>
+<a href="gallery.html" class="nav-link ">المعرض</a>
+<a href="future-plan.html" class="nav-link ">خطة المستقبل</a>
+<a href="philosophy.html" class="nav-link ">فلسفتي</a>
+<a href="references.html" class="nav-link ">المراجع</a>
+<a href="contact.html" class="nav-link ">تواصل معي</a>
+
+        </div>
+        <button class="nav-scroll-btn" onclick="scrollNavLeft()" title="إلى اليسار"><i class="fa-solid fa-chevron-left"></i></button>
+      </div>
+
+      <!-- Live Search Box -->
+      <div class="search-wrapper">
+        <div class="search-input-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="ابحث في الموقع..." aria-label="البحث">
+        </div>
+        <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+      </div>
+
+      <!-- Hamburger Menu for Mobile -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="قائمة التصفح">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  
+  <!-- Page Header Banner -->
+  <header class="section-padding section-with-bg" style="background-image: url('./assets/forest-section.jpg'); padding-top: 8.5rem; padding-bottom: 4rem;">
+    <div class="container text-center">
+      <span class="section-tagline">تعرّف عليّ</span>
+      <h1 class="section-title" style="color: var(--primary-dark); font-size: clamp(2rem, 4vw, 3.2rem);">نبذة قصيرة عن الطالبة بيلار رعد</h1>
+      <p class="section-subtitle">شغف بالتربية الخاصة والتربية غير المنهجية وتمكين الشباب</p>
+    </div>
+  </header>
+        
+
+  <!-- Page Main Content Section -->
+  <main class="section-padding" style="background-color: var(--bg-beige); min-height: 60vh;">
+    <div class="container">
+      <div id="aboutStudentContainer"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <div class="footer-brand"><i class="fa-solid fa-tree"></i> بورتفوليو بيلار رعد الرقمي</div>
+        <p style="font-size: 0.95rem; color: var(--primary-light); margin-top: 0.35rem;">تخصص التربية الخاصة والتربية غير المنهجية - أكاديمية القاسمي</p>
+      </div>
+      <div style="font-size: 0.95rem; color: var(--primary-light);">
+        السنة الدراسية الثانية (2025 - 2026) | مدرسة الأندلس الثانوية الشاملة
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 بيلار رعد. جميع الحقوق محفوظة | بورتفوليو التطبيقات العملية في التربية غير المنهجية
+    </div>
+  </footer>
+
+  <!-- Detail Modal Card -->
+  <div class="modal-backdrop" id="detailModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-backdrop" id="lightboxModal">
+    <div class="modal-card lightbox-content" style="background: rgba(20, 28, 23, 0.96); max-width: 950px; padding: 2.5rem;">
+      <button class="modal-close-btn" id="lightboxCloseBtn" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+      <div id="lightboxContent"></div>
+      <div class="lightbox-nav">
+        <button onclick="prevLightbox()" class="btn-secondary" style="color: #fff; border-color: rgba(255,255,255,0.4);"><i class="fa-solid fa-arrow-right"></i> السابق</button>
+        <button onclick="nextLightbox()" class="btn-secondary" style="color: #fff; border-color: rgba(255,255,255,0.4);">التالي <i class="fa-solid fa-arrow-left"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="العودة إلى الأعلى">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Application Scripts -->
+  <script src="./js/data.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
