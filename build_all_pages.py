@@ -20,8 +20,7 @@ def create_page(filename, active_id, page_title, tagline, heading, subtitle, bg_
         ("gallery.html", "المعرض"),
         ("future-plan.html", "خطة المستقبل"),
         ("philosophy.html", "فلسفتي"),
-        ("references.html", "المراجع"),
-        ("contact.html", "تواصل معي")
+        ("references.html", "المراجع")
     ]
 
     nav_items_html = ""
@@ -256,6 +255,5 @@ create_page("gallery.html", "gallery", "معرض الصور والفيديوها
 create_page("future-plan.html", "futurePlan", "خطة التطوير المستقبلي", "الخطة الاستراتيجية", "خطة التطوير المهني المستقبلي", "خارطة طريق الأهداف المستهدفة والموارد ومؤشرات النجاح", "./assets/forest-section.jpg", '<div id="futurePlanContainer"></div>')
 create_page("philosophy.html", "philosophy", "فلسفتي التربوية", "رؤيتي التربوية", "فلسفتي التربوية الشخصية", "المعتقدات الأساسية والتطوير الميداني للمربية بيلار رعد", "./assets/lake-background.jpg", '<div id="philosophyContainer"></div>')
 create_page("references.html", "references", "المراجع والمصادر", "التوثيق الأكاديمي", "المراجع وقائمة المصادر (APA 7)", "قائمة التوثيق الأكاديمي والكتب والمنصات الرقمية المستعملة", "./assets/mountains-background.jpg", '<div class="references-grid" id="referencesGrid"></div>')
-create_page("contact.html", "contact", "تواصل معي", "تواصل مباشر", "تواصل مع المربية بيلار رعد", "نموذج تواصل مباشر لمشاركة المبادرات والأفكار التربوية", "./assets/forest-section.jpg", '<div id="contactContainer"></div>')
 
-print('All 17 pages updated with scroll controls!')
+print('All 16 pages updated!')
