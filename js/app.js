@@ -97,6 +97,7 @@ function renderCurrentPageContent() {
   if (document.getElementById('galleryGrid')) renderGallery(data.gallery);
   if (document.getElementById('futurePlanContainer')) renderFuturePlan(data.futurePlan);
   if (document.getElementById('philosophyContainer')) renderPhilosophy(data.philosophy);
+  if (document.getElementById('conclusionContainer')) renderConclusion(data.conclusion);
   if (document.getElementById('referencesGrid')) renderReferences(data.references);
   if (document.getElementById('contactContainer')) renderContact(data.student);
 }
@@ -535,7 +536,26 @@ function renderSkillsSection(skillsData) {
 function renderGallery(gallery) {
   const container = document.getElementById('galleryGrid');
   const zipBtnContainer = document.getElementById('zipBtnContainer');
+  const introContainer = document.getElementById('galleryIntroContainer');
+  const outroContainer = document.getElementById('galleryOutroContainer');
   if (!container) return;
+
+  if (introContainer && gallery.intro) {
+    introContainer.innerHTML = `
+      <div class="nature-card" style="margin-bottom: 2rem; border-right: 5px solid var(--primary-accent); padding: 2rem; background: #ffffff;">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+          <div style="width: 45px; height: 45px; border-radius: 50%; background: var(--bg-beige); display: flex; align-items: center; justify-content: center; color: var(--primary-dark); font-size: 1.3rem;">
+            <i class="fa-solid fa-photo-film"></i>
+          </div>
+          <div>
+            <h2 style="font-size: 1.5rem; color: var(--primary-dark); font-weight: 700; margin: 0;">${gallery.intro.title || 'مقدمة المعرض'}</h2>
+            ${gallery.intro.subtitle ? `<span style="font-size: 0.9rem; color: var(--primary-accent); font-weight: 600;">${gallery.intro.subtitle}</span>` : ''}
+          </div>
+        </div>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-dark); margin: 0;">${gallery.intro.description}</p>
+      </div>
+    `;
+  }
 
   if (zipBtnContainer) {
     zipBtnContainer.innerHTML = `
@@ -561,6 +581,18 @@ function renderGallery(gallery) {
       </div>
     </div>
   `).join('');
+
+  if (outroContainer && gallery.outro) {
+    outroContainer.innerHTML = `
+      <div class="nature-card text-center" style="border-top: 4px solid var(--primary-dark); padding: 2.2rem; background: linear-gradient(135deg, #ffffff 0%, var(--bg-beige) 100%); margin-top: 3rem;">
+        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-dark); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem;">
+          <i class="fa-solid fa-heart-circle-check"></i>
+        </div>
+        <h3 style="font-size: 1.4rem; color: var(--primary-dark); font-weight: 700; margin-bottom: 0.75rem;">${gallery.outro.title || 'ختامية المعرض'}</h3>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-dark); max-width: 850px; margin: 0 auto;">${gallery.outro.description}</p>
+      </div>
+    `;
+  }
 }
 
 let currentGalleryIndex = 0;
@@ -643,6 +675,100 @@ function renderPhilosophy(phil) {
         ${idx === 1 ? `<img src="./assets/WhatsApp Image 2026-07-23 at 19.31.26.jpeg" alt="فلسفتي التربوية" style="width: 100%; max-height: 340px; object-fit: cover; border-radius: var(--radius-card); margin-bottom: 1.75rem;">` : ''}
         <p class="philosophy-paragraph">${p}</p>
       `).join('')}
+    </div>
+  `;
+}
+
+// 15.5 Conclusion & Thank You Letter
+function renderConclusion(conc) {
+  const container = document.getElementById('conclusionContainer');
+  if (!container || !conc) return;
+
+  container.innerHTML = `
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      
+      <!-- Portfolio Conclusion Card -->
+      <div class="nature-card" style="border-right: 5px solid var(--primary-accent); padding: 2.2rem; background: #ffffff;">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--bg-beige); display: flex; align-items: center; justify-content: center; color: var(--primary-dark); font-size: 1.4rem;">
+            <i class="fa-solid fa-flag-checkered"></i>
+          </div>
+          <div>
+            <h2 style="font-size: 1.6rem; color: var(--primary-dark); font-weight: 700; margin: 0;">${conc.title}</h2>
+            <span style="font-size: 0.95rem; color: var(--primary-accent); font-weight: 600;">${conc.tagline}</span>
+          </div>
+        </div>
+        <p style="font-size: 1.08rem; line-height: 1.95; color: var(--text-dark); margin: 0;">${conc.introSummary}</p>
+      </div>
+
+      <!-- Main Appreciation Letter to Dr. Doaa Makary -->
+      <div class="nature-card" style="background: linear-gradient(135deg, #1b3d2f 0%, #2c5643 100%); color: #ffffff; padding: 2.5rem; border-radius: var(--radius-card); box-shadow: 0 10px 30px rgba(0,0,0,0.15); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -20px; left: -20px; font-size: 8rem; color: rgba(255,255,255,0.05); pointer-events: none;">
+          <i class="fa-solid fa-quote-left"></i>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1rem;">
+          <div style="width: 55px; height: 55px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #E0E7E1;">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div>
+            <span style="font-size: 0.85rem; letter-spacing: 1px; color: #A8C3B1; text-transform: uppercase; font-weight: 700;">رسالة شكر وتقدير خاصة</span>
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: #ffffff; margin: 0.2rem 0 0 0;">${conc.appreciationLetter.recipient}</h3>
+            <span style="font-size: 0.9rem; color: #D1E0D5;">${conc.appreciationLetter.recipientRole}</span>
+          </div>
+        </div>
+
+        <p style="font-size: 1.12rem; line-height: 2; color: #F0F5F1; margin-bottom: 1.75rem; text-align: justify;">
+          ${conc.appreciationLetter.message}
+        </p>
+
+        <div style="background: rgba(255,255,255,0.1); border-right: 4px solid var(--secondary-gold, #D4AF37); padding: 1.25rem 1.5rem; border-radius: var(--radius-sm); font-style: italic; font-size: 1.05rem; color: #FFF8E7;">
+          <i class="fa-solid fa-quote-right" style="margin-left: 0.5rem; opacity: 0.7;"></i> ${conc.appreciationLetter.quote}
+        </div>
+      </div>
+
+      <!-- Mentor Appreciation & Institutional Thanks Grid -->
+      <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        
+        <!-- Mentor Shatha Anabousi -->
+        <div class="nature-card" style="border-top: 4px solid var(--primary-dark);">
+          <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem;">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: var(--bg-beige); color: var(--primary-dark); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+              <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+            <div>
+              <h4 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); margin: 0;">${conc.mentorAppreciation.recipient}</h4>
+              <span style="font-size: 0.82rem; color: var(--text-muted);">${conc.mentorAppreciation.recipientRole}</span>
+            </div>
+          </div>
+          <p style="font-size: 0.98rem; line-height: 1.8; color: var(--text-dark); margin: 0;">${conc.mentorAppreciation.message}</p>
+        </div>
+
+        ${conc.institutionalThanks.map(inst => `
+          <div class="nature-card" style="border-top: 4px solid var(--primary-accent);">
+            <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem;">
+              <div style="width: 42px; height: 42px; border-radius: 50%; background: var(--bg-beige); color: var(--primary-accent); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                <i class="fa-solid ${inst.icon}"></i>
+              </div>
+              <h4 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); margin: 0;">${inst.title}</h4>
+            </div>
+            <p style="font-size: 0.98rem; line-height: 1.8; color: var(--text-dark); margin: 0;">${inst.desc}</p>
+          </div>
+        `).join('')}
+
+      </div>
+
+      <!-- Final Pledge Card -->
+      <div class="nature-card text-center" style="background: linear-gradient(135deg, #ffffff 0%, var(--bg-beige) 100%); padding: 2rem; border-bottom: 4px solid var(--primary-dark);">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--primary-dark); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem;">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <h3 style="font-size: 1.3rem; color: var(--primary-dark); font-weight: 700; margin-bottom: 0.75rem;">تعهد وعطاء مستمر</h3>
+        <p style="font-size: 1.05rem; line-height: 1.85; color: var(--text-dark); max-width: 850px; margin: 0 auto; font-weight: 500;">
+          ${conc.finalPledge}
+        </p>
+      </div>
+
     </div>
   `;
 }
@@ -851,6 +977,7 @@ function initSearch() {
     { title: "معرض الصور والفيديوهات", category: "صفحة", link: "gallery.html" },
     { title: "خطة التطوير المستقبلي", category: "صفحة", link: "future-plan.html" },
     { title: "فلسفتي التربوية", category: "صفحة", link: "philosophy.html" },
+    { title: "الخاتمة ورسالة الشكر", category: "صفحة", link: "conclusion.html" },
     { title: "المراجع وقائمة المصادر", category: "صفحة", link: "references.html" },
     { title: "تواصل معي", category: "صفحة", link: "contact.html" }
   ];

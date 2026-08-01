@@ -20,6 +20,7 @@ def create_page(filename, active_id, page_title, tagline, heading, subtitle, bg_
         ("gallery.html", "المعرض"),
         ("future-plan.html", "خطة المستقبل"),
         ("philosophy.html", "فلسفتي"),
+        ("conclusion.html", "الخاتمة والشكر"),
         ("references.html", "المراجع")
     ]
 
@@ -251,9 +252,10 @@ create_page("projects.html", "projects", "المشاريع والأعمال", "�
 create_page("theories.html", "theories", "النظرية والتطبيق", "الأسس التربوية", "التكامل بين النظرية والتطبيق", "النظريات التربوية (PBL, NFE, Freire, SEL) وتطبيقاتها", "./assets/mountains-background.jpg", '<div class="cards-grid" id="theoriesGrid"></div>')
 create_page("reflections.html", "reflections", "التأملات وقصص النجاح", "رحلة التعلم والتطور", "التأملات الشخصية والانعكاسات", "سيرورة التفكير الانعكاسي والتطوير الذاتي وملاحظات المرشدين", "./assets/forest-section.jpg", '<div id="reflectionsContainer"></div>')
 create_page("skills.html", "skills", "المهارات والخبرات", "قدرات ومؤهلات", "المهارات والكفاءات التربوية", "المهارات البيداغوجية والبيانات الرقمية والقيادة الميدانية", "./assets/lake-background.jpg", '<div class="cards-grid" id="skillsGrid"></div>')
-create_page("gallery.html", "gallery", "معرض الصور والفيديوهات", "التوثيق البصري", "معرض الصور والفيديوهات التفاعلي", "توثيق بصري شامل للتطبيقات العملية وتنزيل الملف الكامل", "./assets/mountains-background.jpg", '<div id="zipBtnContainer" class="text-center"></div><div class="gallery-grid" id="galleryGrid"></div>')
+create_page("gallery.html", "gallery", "معرض الصور والفيديوهات", "التوثيق البصري", "معرض الصور والفيديوهات التفاعلي", "توثيق بصري شامل للتطبيقات العملية وتنزيل الملف الكامل", "./assets/mountains-background.jpg", '<div id="galleryIntroContainer"></div><div id="zipBtnContainer" class="text-center"></div><div class="gallery-grid" id="galleryGrid"></div><div id="galleryOutroContainer"></div>')
 create_page("future-plan.html", "futurePlan", "خطة التطوير المستقبلي", "الخطة الاستراتيجية", "خطة التطوير المهني المستقبلي", "خارطة طريق الأهداف المستهدفة والموارد ومؤشرات النجاح", "./assets/forest-section.jpg", '<div id="futurePlanContainer"></div>')
 create_page("philosophy.html", "philosophy", "فلسفتي التربوية", "رؤيتي التربوية", "فلسفتي التربوية الشخصية", "المعتقدات الأساسية والتطوير الميداني للمربية بيلار رعد", "./assets/lake-background.jpg", '<div id="philosophyContainer"></div>')
+create_page("conclusion.html", "conclusion", "الخاتمة ورسالة الشكر", "ختام المسيرة والوفاء", "الخاتمة ورسالة الشكر والامتنان", "خاتمة البورتفوليو ورسالة شكر وتقدير للدكتورة دعاء مقاري والأستاذة شذى عنبوسي", "./assets/lake-background.jpg", '<div id="conclusionContainer"></div>')
 create_page("references.html", "references", "المراجع والمصادر", "التوثيق الأكاديمي", "المراجع وقائمة المصادر (APA 7)", "قائمة التوثيق الأكاديمي والكتب والمنصات الرقمية المستعملة", "./assets/mountains-background.jpg", '<div class="references-grid" id="referencesGrid"></div>')
 
-print('All 16 pages updated!')
+print('All 17 pages updated!')
