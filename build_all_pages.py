@@ -233,7 +233,7 @@ index_content = """
     <div class="nature-card text-center">
       <img src="./assets/PHOTO-2025-07-02-19-57-45.jpg" alt="معرض الصور والفيديوهات" style="width:100%; height:160px; object-fit:cover; border-radius:var(--radius-sm); margin-bottom:1rem;">
       <h3 style="font-size: 1.25rem; color: var(--primary-dark); font-weight: 700; margin-bottom: 0.5rem;"><i class="fa-solid fa-images"></i> المعرض التفاعلي</h3>
-      <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem;">الصور والفيديوهات الميدانية وتنزيل الملف الكامل ZIP.</p>
+      <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem;">الصور والفيديوهات الميدانية والتوثيق البصري الشامل.</p>
       <a href="gallery.html" class="btn-primary" style="justify-content: center;"><i class="fa-solid fa-arrow-left"></i> دخول الصفحة</a>
     </div>
   </div>
@@ -252,7 +252,7 @@ create_page("projects.html", "projects", "المشاريع والأعمال", "�
 create_page("theories.html", "theories", "النظرية والتطبيق", "الأسس التربوية", "التكامل بين النظرية والتطبيق", "النظريات التربوية (PBL, NFE, Freire, SEL) وتطبيقاتها", "./assets/mountains-background.jpg", '<div class="cards-grid" id="theoriesGrid"></div>')
 create_page("reflections.html", "reflections", "التأملات وقصص النجاح", "رحلة التعلم والتطور", "التأملات الشخصية والانعكاسات", "سيرورة التفكير الانعكاسي والتطوير الذاتي وملاحظات المرشدين", "./assets/forest-section.jpg", '<div id="reflectionsContainer"></div>')
 create_page("skills.html", "skills", "المهارات والخبرات", "قدرات ومؤهلات", "المهارات والكفاءات التربوية", "المهارات البيداغوجية والبيانات الرقمية والقيادة الميدانية", "./assets/lake-background.jpg", '<div class="cards-grid" id="skillsGrid"></div>')
-create_page("gallery.html", "gallery", "معرض الصور والفيديوهات", "التوثيق البصري", "معرض الصور والفيديوهات التفاعلي", "توثيق بصري شامل للتطبيقات العملية وتنزيل الملف الكامل", "./assets/mountains-background.jpg", '<div id="galleryIntroContainer"></div><div id="zipBtnContainer" class="text-center"></div><div class="gallery-grid" id="galleryGrid"></div><div id="galleryOutroContainer"></div>')
+create_page("gallery.html", "gallery", "معرض الصور والفيديوهات", "التوثيق البصري", "معرض الصور والفيديوهات التفاعلي", "توثيق بصري شامل للتطبيقات العملية والأنشطة الميدانية", "./assets/mountains-background.jpg", '<div id="galleryIntroContainer"></div><div class="gallery-grid" id="galleryGrid"></div><div id="galleryOutroContainer"></div>')
 create_page("future-plan.html", "futurePlan", "خطة التطوير المستقبلي", "الخطة الاستراتيجية", "خطة التطوير المهني المستقبلي", "خارطة طريق الأهداف المستهدفة والموارد ومؤشرات النجاح", "./assets/forest-section.jpg", '<div id="futurePlanContainer"></div>')
 create_page("philosophy.html", "philosophy", "فلسفتي التربوية", "رؤيتي التربوية", "فلسفتي التربوية الشخصية", "المعتقدات الأساسية والتطوير الميداني للمربية بيلار رعد", "./assets/lake-background.jpg", '<div id="philosophyContainer"></div>')
 create_page("conclusion.html", "conclusion", "الخاتمة ورسالة الشكر", "ختام المسيرة والوفاء", "الخاتمة ورسالة الشكر والامتنان", "خاتمة البورتفوليو ورسالة شكر وتقدير للدكتورة دعاء مقاري والأستاذة شذى عنبوسي", "./assets/lake-background.jpg", '<div id="conclusionContainer"></div>')

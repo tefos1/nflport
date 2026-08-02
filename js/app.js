@@ -14,8 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function getSafeAssetPath(filename) {
   if (!filename) return '#';
   if (filename.startsWith('http://') || filename.startsWith('https://')) return filename;
+
+  if (filename.startsWith('./vid/') || filename.startsWith('vid/')) {
+    let cleanName = filename.replace(/^\.\/vid\//, '').replace(/^vid\//, '');
+    return `./vid/${encodeURI(cleanName)}`;
+  }
+
   let cleanName = filename.replace(/^\.\/assets\//, '').replace(/^assets\//, '');
-  return `./assets/${encodeURIComponent(cleanName)}`;
+  return `./assets/${encodeURI(cleanName)}`;
 }
 
 function scrollNavLeft() {
@@ -535,7 +541,6 @@ function renderSkillsSection(skillsData) {
 // 13. Gallery
 function renderGallery(gallery) {
   const container = document.getElementById('galleryGrid');
-  const zipBtnContainer = document.getElementById('zipBtnContainer');
   const introContainer = document.getElementById('galleryIntroContainer');
   const outroContainer = document.getElementById('galleryOutroContainer');
   if (!container) return;
@@ -557,30 +562,27 @@ function renderGallery(gallery) {
     `;
   }
 
-  if (zipBtnContainer) {
-    zipBtnContainer.innerHTML = `
-      <a href="${getSafeAssetPath(gallery.zipFile)}" download class="btn-primary" style="margin-bottom: 2rem;">
-        <i class="fa-solid fa-file-zipper"></i> تحميل ملف الوسائط الكامل (ZIP)
-      </a>
-    `;
-  }
-
-  container.innerHTML = gallery.items.map((item, index) => `
-    <div class="gallery-item" onclick="openLightbox(${index})">
-      ${item.type === 'image' ? `
-        <img src="${getSafeAssetPath(item.src)}" alt="${item.title}" loading="lazy">
-      ` : `
-        <video src="${getSafeAssetPath(item.src)}" preload="metadata"></video>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
-          <i class="fa-solid fa-circle-play"></i>
+  container.innerHTML = gallery.items.map((item, index) => {
+    const assetUrl = getSafeAssetPath(item.src);
+    return `
+      <div class="gallery-item" onclick="openLightbox(${index})">
+        ${item.type === 'image' ? `
+          <img src="${assetUrl}" alt="${item.title}" loading="lazy">
+        ` : `
+          <video preload="metadata" muted playsinline style="width:100%; height:100%; object-fit:cover;">
+            <source src="${assetUrl}#t=0.5" type="video/mp4">
+          </video>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.8rem; color: #ffffff; text-shadow: 0 4px 15px rgba(0,0,0,0.7); pointer-events: none;">
+            <i class="fa-solid fa-circle-play"></i>
+          </div>
+        `}
+        <div class="gallery-overlay">
+          <div style="font-weight: 700; font-size: 0.98rem; font-family: 'Alexandria', sans-serif;">${item.title}</div>
+          <p style="font-size: 0.82rem; color: #EAEFE9;">${item.description}</p>
         </div>
-      `}
-      <div class="gallery-overlay">
-        <div style="font-weight: 700; font-size: 0.98rem; font-family: 'Alexandria', sans-serif;">${item.title}</div>
-        <p style="font-size: 0.82rem; color: #EAEFE9;">${item.description}</p>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   if (outroContainer && gallery.outro) {
     outroContainer.innerHTML = `
@@ -597,18 +599,25 @@ function renderGallery(gallery) {
 
 let currentGalleryIndex = 0;
 function openLightbox(index) {
-  currentGalleryIndex = index;
   const items = PORTFOLIO_DATA.gallery.items;
+  if (!items || !items[index]) return;
+
+  currentGalleryIndex = index;
   const item = items[index];
   const modal = document.getElementById('lightboxModal');
   const content = document.getElementById('lightboxContent');
   if (!modal || !content) return;
 
+  const assetUrl = getSafeAssetPath(item.src);
+
   content.innerHTML = `
     ${item.type === 'image' ? `
-      <img src="${getSafeAssetPath(item.src)}" class="lightbox-img" alt="${item.title}">
+      <img src="${assetUrl}" class="lightbox-img" alt="${item.title}">
     ` : `
-      <video src="${getSafeAssetPath(item.src)}" controls autoplay class="lightbox-video"></video>
+      <video class="lightbox-video" controls autoplay playsinline style="width: 100%; max-height: 70vh; border-radius: var(--radius-md); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <source src="${assetUrl}" type="video/mp4">
+        متصفحك لا يدعم تشغيل هذا الفيديو.
+      </video>
     `}
     <h3 style="margin-top: 1rem; color: var(--bg-warm-white);">${item.title}</h3>
     <p style="font-size: 0.95rem; color: var(--primary-light);">${item.description}</p>
@@ -617,16 +626,45 @@ function openLightbox(index) {
   modal.classList.add('active');
 }
 
+function closeLightbox() {
+  const modal = document.getElementById('lightboxModal');
+  if (modal) {
+    modal.classList.remove('active');
+    const content = document.getElementById('lightboxContent');
+    if (content) {
+      const videos = content.querySelectorAll('video');
+      videos.forEach(v => {
+        v.pause();
+        v.src = '';
+      });
+      content.innerHTML = '';
+    }
+  }
+}
+
 function prevLightbox() {
+  closeLightboxVideos();
   const items = PORTFOLIO_DATA.gallery.items;
   currentGalleryIndex = (currentGalleryIndex - 1 + items.length) % items.length;
   openLightbox(currentGalleryIndex);
 }
 
 function nextLightbox() {
+  closeLightboxVideos();
   const items = PORTFOLIO_DATA.gallery.items;
   currentGalleryIndex = (currentGalleryIndex + 1) % items.length;
   openLightbox(currentGalleryIndex);
+}
+
+function closeLightboxVideos() {
+  const content = document.getElementById('lightboxContent');
+  if (content) {
+    const videos = content.querySelectorAll('video');
+    videos.forEach(v => {
+      v.pause();
+      v.src = '';
+    });
+  }
 }
 
 // 14. Future Plan
@@ -850,10 +888,28 @@ function initModals() {
 
   if (modalCloseBtn && modalBackdrop) {
     modalCloseBtn.addEventListener('click', () => modalBackdrop.classList.remove('active'));
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) modalBackdrop.classList.remove('active');
+    });
   }
+
   if (lightboxCloseBtn && lightboxModal) {
-    lightboxCloseBtn.addEventListener('click', () => lightboxModal.classList.remove('active'));
+    lightboxCloseBtn.addEventListener('click', closeLightbox);
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) closeLightbox();
+    });
   }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (lightboxModal && lightboxModal.classList.contains('active')) {
+        closeLightbox();
+      }
+      if (modalBackdrop && modalBackdrop.classList.contains('active')) {
+        modalBackdrop.classList.remove('active');
+      }
+    }
+  });
 }
 
 function openObsModal(id) {

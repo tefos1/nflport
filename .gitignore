@@ -4,8 +4,11 @@
 *.exe
 *.iso
 *.mp4
+
 !assets/WhatsApp Video 2026-07-23 at 19.31.43.mp4
 !assets/WhatsApp Video 2026-07-23 at 19.32.09.mp4
 !assets/WhatsApp Video 2026-07-23 at 19.32.26.mp4
-!assets/WhatsApp Unknown 2026-07-23 at 19.39.40.zip
-.git/
+!assets/WhatsApp Video 2026-08-02*
+!assets/WhatsApp Image 2026-08-02*
+!vid/*
+
